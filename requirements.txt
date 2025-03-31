@@ -1,0 +1,11 @@
+torch
+torchvision
+scipy
+numpy
+omegaconf
+tensorboard
+matplotlib
+roma
+ipykernel
+tqdm
+pandas

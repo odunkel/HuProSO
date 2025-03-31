@@ -1,0 +1,76 @@
+exp_id: 900
+comment: Experiments
+seed: 10
+device: cuda:2
+standard_mode: true
+max_iterations: 20000
+num_epochs: 1000
+lr: 0.005
+min_lr: 0.001
+lr_jammy: 0.01
+min_lr_jammy: 0.0002
+lr_scheduler: true
+lr_scheduler_step_gamma: 0.5
+lrs_step_size: 0.7
+only_eval: false
+batch_size: 2000
+num_eval_samples: 5000
+num_emd_samples: 2000
+rotation_representation: matrix
+trainer: SO3PriorTrainer
+rotate_to_zero_mean: false
+selected_joints: None
+data:
+  database: AMASS
+  dataset: Train
+valid:
+  dataset: Valid
+  ds_ratio: 0.1
+  split_mode: random
+  interval: 500
+  compute_wasser: true
+  inv_kin: false
+eval:
+  dataset: Eval
+  ds_ratio: 0.1
+save:
+  path_dir: ../docu/experiments/priors/id_0900/
+model:
+  num_flow_layers: 12
+  num_res_blocks: 1
+  num_hidden_dim: 64
+  num_bins: 10
+  hidden_mlp_dims_sub_pdfs: 64
+  add_normalization: false
+  only_upper_hemisphere: false
+  quat_use_circ: true
+  push_to_SO3: false
+so3:
+  dist: mobiusflow
+  data_dir: data
+  condition: false
+  n_dim: 19
+  dim_cond_feature: 66
+  feature_dim: 64
+  feature_channels: 64
+  embedding: 0
+  layers: 12
+  segments: 32
+  rot: 16Trans
+  lu: 0
+  num_workers: 4
+  frequent_permute: 0
+  last_affine: 0
+  first_affine: 0
+  independent: false
+  nd_conditioning: false
+conditioning:
+  conditioning_modality: ''
+  hidden_mlp_dims: 64
+  num_hid_layers: 1
+  ancestor_conditioning: false
+  mask: false
+  mask_type: random
+  zero_mask_prob: 0.5
+  vary_mask_prob: true
+  mask_neg_offset: true

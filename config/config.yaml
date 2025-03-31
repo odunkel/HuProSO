@@ -1,0 +1,85 @@
+exp_id:  1
+comment: Experiments
+seed: 10
+device: cuda:0
+standard_mode: False
+max_iterations: 20_000
+num_epochs: 2_000
+lr: 1e-2 
+min_lr: 1e-3 
+lr_scheduler: True
+lr_scheduler_step_gamma: 0.5
+lrs_step_size: 0.6
+lrs_step_2_size: 0.9
+only_eval: False
+evaluate: True
+batch_size: 2000
+num_eval_samples: 5_000
+num_emd_samples: 2_000
+rotation_representation: matrix
+trainer: SO3PriorTrainer
+rotate_to_zero_mean: False
+selected_joints:
+  - LeftUpLeg
+  - RightUpLeg
+save_ckpt_every: 1_000
+clip_grad_norm: 1.0
+data:
+  database: AMASS
+  dataset: ACCAD
+valid:
+  dataset: MoSh
+  ds_ratio: 0.1
+  split_mode: "random"
+  interval: 200
+  compute_wasser: False
+  inv_kin: True
+eval:
+  dataset: MoSh
+  ds_ratio: 0.1
+save:
+  path_dir: experiments
+model:
+  num_flow_layers: 6
+  num_res_blocks: 1
+  num_hidden_dim: 64
+  num_bins: 10
+  hidden_mlp_dims_sub_pdfs: 64 
+  add_normalization: False
+  only_upper_hemisphere: False
+  quat_use_circ: True
+  push_to_SO3: False
+so3:
+  dist: 'mobiusflow'
+  data_dir: 'data'
+  condition: True
+  n_dim: 19
+  dim_cond_feature: 66
+  feature_dim: 64
+  feature_channels: 64
+  embedding: 0
+  layers: 12
+  segments: 32
+  rot: '16Trans'
+  lu: 0
+  num_workers: 4
+  frequent_permute: 0
+  last_affine: 0
+  first_affine: 0
+  independent: False
+  nd_conditioning: False
+  hidden_dims_moebius_conditioner: 32
+  num_hidden_layers_moebius_conditioner: 2
+  only_mobius: False
+  clamp_value: 4.0
+  dof1_dims: True
+conditioning:
+  conditioning_modality: "3D"
+  hidden_mlp_dims: 64
+  num_hid_layers: 1
+  ancestor_conditioning: False
+  mask: false
+  mask_type: "random"
+  zero_mask_prob: 0.5
+  vary_mask_prob: True
+  mask_neg_offset: True

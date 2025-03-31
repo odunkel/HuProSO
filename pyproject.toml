@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hp"
+version = "1.0"
+description = "Code for HuProSO3"
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [
+  { name = "Olaf Duenkel", email = "olduebox@outlook.com" }
+]
+urls = { Homepage = "https://github.com/odunkel/huproso_work" }
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
