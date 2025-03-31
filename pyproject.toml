@@ -11,7 +11,7 @@ requires-python = ">=3.7"
 authors = [
   { name = "Olaf Duenkel", email = "olduebox@outlook.com" }
 ]
-urls = { Homepage = "https://github.com/odunkel/huproso_work" }
+urls = { Homepage = "https://github.com/odunkel/HuProSO" }
 
 [tool.setuptools]
 package-dir = { "" = "src" }
